@@ -57,26 +57,7 @@ class Portfolio {
   }
 
   private renderHero(): string {
-    return `
-      <section class="section pt-32">
-        <div class="container-custom text-center">
-          <h1 class="text-6xl font-bold mb-6 leading-tight opacity-0 animate-fade-in" style="animation-delay: 0.2s;">
-            Hi, I'm <span class="gradient-text">Your Name</span>
-          </h1>
-          <p class="text-lg text-gray-600 mb-10 max-w-2xl mx-auto opacity-0 animate-fade-in" style="animation-delay: 0.4s;">
-            Passionate about building scalable web applications and solving complex problems with clean, efficient code
-          </p>
-          <div class="flex gap-4 justify-center opacity-0 animate-fade-in" style="animation-delay: 0.6s;">
-            <a href="#projects" class="px-8 py-3 bg-clean-text text-white rounded-lg hover:bg-gray-800 transition-all transform hover:scale-105">
-              View Projects
-            </a>
-            <a href="#contact" class="px-8 py-3 border-2 border-clean-text rounded-lg hover:bg-clean-text hover:text-white transition-all transform hover:scale-105">
-              Get in Touch
-            </a>
-          </div>
-        </div>
-      </section>
-    `;
+    return ``;
   }
 
   private renderAbout(): string {
