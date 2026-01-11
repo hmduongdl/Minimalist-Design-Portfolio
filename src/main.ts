@@ -47,7 +47,6 @@ class Portfolio {
             <ul class="flex gap-8">
               <li><a href="#about" class="link-hover text-sm font-medium">About</a></li>
               <li><a href="#projects" class="link-hover text-sm font-medium">Projects</a></li>
-              <li><a href="#about" data-scroll-to-experience class="link-hover text-sm font-medium">Experience</a></li>
               <li><a href="#contact" class="link-hover text-sm font-medium">Contact</a></li>
             </ul>
           </div>
@@ -67,15 +66,15 @@ class Portfolio {
   private renderAbout(): string {
     const experiences: Experience[] = [
       {
-        role: 'Full Stack Developer Intern',
-        company: 'Tech Startup Vietnam',
-        period: 'Jun 2025 - Present',
-        description: 'Developing microservices architecture for SaaS platform. Implemented caching layer reducing API response time by 60%. Working with React, Node.js, and AWS services.'
+        role: 'Web Developer',
+        company: 'Song Phương Technology',
+        period: 'March 2025 - Present',
+        description: 'Specializing in full-stack web development, iterative product updates, and SEO optimization for high-performance digital experiences.'
       },
       {
         role: 'Frontend Developer',
         company: 'Freelance Projects',
-        period: 'Jan 2024 - May 2025',
+        period: 'Jan 2024 - Present',
         description: 'Built responsive web applications for 5+ clients. Specialized in React and TypeScript with focus on performance optimization and accessibility.'
       },
       {
@@ -87,7 +86,7 @@ class Portfolio {
     ];
 
     return `
-      <section id="about" class="section about-section-bg relative overflow-hidden">
+      <section id="about" class="section section-compact about-section-bg relative overflow-hidden">
         <!-- Background Image with Blur -->
         <div class="absolute inset-0 -z-10">
           <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" style="background-image: url('/profile-background.jpg'); filter: blur(8px); transform: scale(1.1);"></div>
@@ -97,7 +96,7 @@ class Portfolio {
         <div class="container-custom relative z-10">
           <div class="grid md:grid-cols-[340px_1fr] lg:grid-cols-[400px_1fr] gap-10 md:gap-16 lg:gap-24 items-start">
             <!-- Left Column: Avatar and About Me -->
-            <div class="section-reveal bg-white/90 backdrop-blur-sm rounded-2xl p-6 md:p-8 shadow-lg">
+            <div class="section-reveal bg-white/90 backdrop-blur-sm rounded-2xl p-6 md:p-8 shadow-lg mt-4 md:mt-6 lg:mt-8">
               <!-- Avatar with Signature Overlay -->
               <div class="relative w-auto mx-auto overflow-visible" style="width: 256px; margin-bottom: 2.4rem;">
                 <!-- Avatar -->
@@ -105,7 +104,7 @@ class Portfolio {
                   <img src="/img/my-avatar.jpg" alt="Profile Avatar" class="w-full h-full object-cover">
                 </div>
                 
-                <!-- Signature positioned at bottom of avatar -->
+                <!-- Signature positioned at bottom of avatar --> 
                 <div class="absolute left-1/2" style="bottom: -5.5rem; width: 300px; transform: translateX(-50%);">
                   <img src="/img/signature.png" alt="Signature" class="w-full h-auto object-contain drop-shadow-lg">
                 </div>
@@ -114,7 +113,7 @@ class Portfolio {
               <!-- Name and Title -->
               <div class="text-center mb-6">
                 <h1 class="text-3xl font-bold mb-1">Hoàng Minh Dương</h1>
-                <p class="text-lg text-gray-600">Full Stack Developer</p>
+                <p class="text-lg text-gray-600">Frontend Developer</p>
               </div>
               
               <!-- About Me Title -->
@@ -159,20 +158,20 @@ class Portfolio {
             <!-- Right Column: Experience and Tech Stack -->
             <div class="section-reveal">
               <!-- Experience Section -->
-              <div id="experience-section" class="mb-6 p-6 -mx-6 rounded-lg transition-all duration-500">
-                <h2 class="text-2xl font-bold mb-6 flex items-center">
+              <div id="experience-section" class="mb-4 p-6 rounded-lg transition-all duration-500">
+                <h2 class="text-2xl font-bold mb-4 flex items-center">
                   <span class="w-2 h-2 bg-clean-accent rounded-full mr-3"></span>
                   Experience
                 </h2>
-                <div class="space-y-6">
+                <div class="space-y-4">
                   ${experiences.map((exp, index) => `
-                    <div class="border-l-4 border-clean-accent pl-6 pb-6">
+                    <div class="experience-card">
                       <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-2">
                         <h3 class="text-xl font-bold">${exp.role}</h3>
                         <span class="text-xs font-mono text-gray-500 mt-1 lg:mt-0 lg:ml-4 whitespace-nowrap">${exp.period}</span>
                       </div>
-                      <p class="text-base text-gray-600 font-medium mb-2">${exp.company}</p>
-                      <p class="text-sm text-gray-700 leading-relaxed text-justify">${exp.description}</p>
+                      <p class="text-base text-clean-accent font-semibold mb-2">${exp.company}</p>
+                      <p class="text-sm text-gray-700 leading-tight text-justify">${exp.description}</p>
                     </div>
                   `).join('')}
                 </div>
@@ -180,7 +179,7 @@ class Portfolio {
 
               <!-- Tech Stack Section -->
               <div>
-                <h2 class="text-2xl font-bold mb-6 flex items-center">
+                <h2 class="text-2xl font-bold mb-4 flex items-center">
                   <span class="w-2 h-2 bg-clean-accent rounded-full mr-3"></span>
                   Tech Stack
                 </h2>
@@ -388,26 +387,13 @@ class Portfolio {
         e.preventDefault();
         const href = anchor.getAttribute('href');
 
-        // Check if this is the Experience link
-        if (anchor.hasAttribute('data-scroll-to-experience')) {
-          const aboutSection = document.querySelector('#about');
-          const experienceSection = document.querySelector('#experience-section');
-
-          aboutSection?.scrollIntoView({ behavior: 'smooth' });
-
-          // Highlight experience section with animation
-          setTimeout(() => {
-            if (experienceSection) {
-              experienceSection.classList.add('experience-highlight');
-              setTimeout(() => {
-                experienceSection.classList.remove('experience-highlight');
-              }, 2000);
-            }
-          }, 500);
-        } else if (href && href !== '#') {
+        if (href && href !== '#') {
           const target = document.querySelector(href);
           target?.scrollIntoView({ behavior: 'smooth' });
+          return;
         }
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       });
     });
 

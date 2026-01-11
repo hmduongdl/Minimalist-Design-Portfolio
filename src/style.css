@@ -17,8 +17,14 @@
     @apply min-h-screen flex items-center justify-center px-4 py-20;
   }
   
+  .section-compact {
+    min-height: auto;
+    padding-top: 3rem;
+    padding-bottom: 2rem;
+  }
+  
   .container-custom {
-    @apply max-w-4xl mx-auto;
+    @apply max-w-5xl mx-auto;
   }
   
   .link-hover {
@@ -34,52 +40,18 @@
     @apply hover:shadow-xl hover:-translate-y-2;
   }
   
+  .experience-card {
+    @apply border-l-4 border-gray-300 rounded-lg bg-white/70 transition-all duration-200;
+    @apply px-5 py-5 md:px-7 md:py-6;
+  }
+
+  .experience-card:hover {
+    @apply border-clean-accent bg-white shadow-md;
+    transform: translateY(-2px);
+  }
+  
   .gradient-text {
     @apply bg-gradient-to-r from-deep-accent to-deep-accent-alt bg-clip-text text-transparent;
   }
   
-  /* Experience highlight animation */
-  @keyframes highlightBorder {
-    0% {
-      background: linear-gradient(0deg, #059669 0%, transparent 0%);
-    }
-    25% {
-      background: linear-gradient(0deg, #059669 100%, transparent 0%),
-                  linear-gradient(90deg, #059669 0%, transparent 0%);
-      background-position: bottom left, bottom left;
-      background-size: 100% 3px, 3px 100%;
-      background-repeat: no-repeat;
-    }
-    50% {
-      background: linear-gradient(0deg, #059669 100%, transparent 0%),
-                  linear-gradient(90deg, #059669 100%, transparent 0%),
-                  linear-gradient(180deg, #059669 0%, transparent 0%);
-      background-position: bottom left, bottom right, top right;
-      background-size: 100% 3px, 3px 100%, 100% 3px;
-      background-repeat: no-repeat;
-    }
-    75% {
-      background: linear-gradient(0deg, #059669 100%, transparent 0%),
-                  linear-gradient(90deg, #059669 100%, transparent 0%),
-                  linear-gradient(180deg, #059669 100%, transparent 0%),
-                  linear-gradient(270deg, #059669 0%, transparent 0%);
-      background-position: bottom left, bottom right, top right, top left;
-      background-size: 100% 3px, 3px 100%, 100% 3px, 3px 100%;
-      background-repeat: no-repeat;
-    }
-    100% {
-      background: linear-gradient(0deg, #059669 100%, transparent 0%),
-                  linear-gradient(90deg, #059669 100%, transparent 0%),
-                  linear-gradient(180deg, #059669 100%, transparent 0%),
-                  linear-gradient(270deg, #059669 100%, transparent 0%);
-      background-position: bottom left, bottom right, top right, top left;
-      background-size: 100% 3px, 3px 100%, 100% 3px, 3px 100%;
-      background-repeat: no-repeat;
-    }
-  }
-  
-  .experience-highlight {
-    animation: highlightBorder 0.3s ease-in-out;
-    background-color: #d1fae5;
-  }
 }
