@@ -183,7 +183,7 @@ class Portfolio {
             <!-- Right Column: Experience and Tech Stack -->
               <div class="section-reveal flex flex-col gap-8">
                 <!-- Experience Section -->
-                <div id="experience-section" class="py-6 rounded-lg transition-all duration-500 mb-0">
+                <div id="experience-section" class="pt-6 pb-0 rounded-lg transition-all duration-500 mb-0">
                 <h2 class="text-2xl font-bold mb-4 flex items-center">
                   <span class="w-2 h-2 bg-clean-accent rounded-full mr-3"></span>
                   Experience
