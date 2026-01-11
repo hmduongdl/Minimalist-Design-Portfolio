@@ -34,6 +34,7 @@ class Portfolio {
       ${this.renderAbout()}
       ${this.renderProjects()}
       ${this.renderContact()}
+      ${this.renderFooter()}
     `;
   }
 
@@ -42,7 +43,7 @@ class Portfolio {
       <nav class="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-sm z-50 border-b border-gray-100">
         <div class="container-custom py-4">
           <div class="flex justify-between items-center">
-            <a href="#" class="text-xl font-semibold">STEWICLEZ</a>
+            <a href="#" class="text-xl font-semibold">HMD</a>
             <ul class="flex gap-8">
               <li><a href="#about" class="link-hover text-sm font-medium">About</a></li>
               <li><a href="#projects" class="link-hover text-sm font-medium">Projects</a></li>
@@ -50,6 +51,10 @@ class Portfolio {
               <li><a href="#contact" class="link-hover text-sm font-medium">Contact</a></li>
             </ul>
           </div>
+        </div>
+        <!-- Scroll Progress Bar -->
+        <div class="absolute bottom-0 left-0 w-full h-1 bg-gray-200">
+          <div id="scroll-progress" class="h-full bg-clean-accent transition-all duration-150" style="width: 0%"></div>
         </div>
       </nav>
     `;
@@ -93,9 +98,17 @@ class Portfolio {
           <div class="grid md:grid-cols-[340px_1fr] lg:grid-cols-[400px_1fr] gap-10 md:gap-16 lg:gap-24 items-start">
             <!-- Left Column: Avatar and About Me -->
             <div class="section-reveal bg-white/90 backdrop-blur-sm rounded-2xl p-6 md:p-8 shadow-lg">
-              <!-- Avatar -->
-              <div class="w-64 h-64 rounded-full border-4 border-gray-900 overflow-hidden mb-6 mx-auto bg-gray-200">
-                <img src="/img/my-avatar.jpg" alt="Profile Avatar" class="w-full h-full object-cover">
+              <!-- Avatar with Signature Overlay -->
+              <div class="relative w-auto mx-auto overflow-visible" style="width: 256px; margin-bottom: 2.4rem;">
+                <!-- Avatar -->
+                <div class="w-64 h-64 rounded-full border-4 border-gray-900 overflow-hidden bg-gray-200">
+                  <img src="/img/my-avatar.jpg" alt="Profile Avatar" class="w-full h-full object-cover">
+                </div>
+                
+                <!-- Signature positioned at bottom of avatar -->
+                <div class="absolute left-1/2" style="bottom: -5.5rem; width: 300px; transform: translateX(-50%);">
+                  <img src="/img/signature.png" alt="Signature" class="w-full h-auto object-contain drop-shadow-lg">
+                </div>
               </div>
               
               <!-- Name and Title -->
@@ -128,7 +141,7 @@ class Portfolio {
                   </div>
                   <div class="w-full bg-gray-200 rounded-full h-2">
                     <div class="bg-clean-accent h-2 rounded-full" style="width: 100%"></div>
-                  </div>EN
+                  </div>
                 </div>
                 <div>
                   <div class="flex justify-between mb-2">
@@ -173,8 +186,8 @@ class Portfolio {
                 </h2>
                 <div class="flex flex-wrap gap-2">
                   ${['TypeScript', 'React', 'Node.js', 'Express', 'PostgreSQL', 'MongoDB', 'Tailwind CSS', 'Git', 'Docker', 'Redis']
-                    .map(skill => `<span class="tech-tag hover:border-clean-accent hover:text-clean-accent transition-colors cursor-default">${skill}</span>`)
-                    .join('')}
+        .map(skill => `<span class="tech-tag hover:border-clean-accent hover:text-clean-accent transition-colors cursor-default">${skill}</span>`)
+        .join('')}
                 </div>
               </div>
             </div>
@@ -278,9 +291,9 @@ class Portfolio {
                 <div class="mb-4">
                   <h4 class="font-semibold text-sm text-gray-500 uppercase tracking-wider mb-2">Tech Stack</h4>
                   <div class="flex flex-wrap gap-2">
-                    ${project.technologies.map(tech => 
-                      `<span class="tech-tag">${tech}</span>`
-                    ).join('')}
+                    ${project.technologies.map(tech =>
+      `<span class="tech-tag">${tech}</span>`
+    ).join('')}
                   </div>
                 </div>
                 
@@ -354,20 +367,34 @@ class Portfolio {
     `;
   }
 
+  private renderFooter(): string {
+    return `
+      <footer class="bg-gray-50 border-t border-gray-200 py-2">
+        <div class="container-custom">
+          <div class="text-center">
+            <p class="text-gray-600 text-sm">
+              © 2026 Hoàng Minh Dương.
+            </p>
+          </div>
+        </div>
+      </footer>
+    `;
+  }
+
   private addEventListeners(): void {
     // Smooth scroll for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', (e) => {
         e.preventDefault();
         const href = anchor.getAttribute('href');
-        
+
         // Check if this is the Experience link
         if (anchor.hasAttribute('data-scroll-to-experience')) {
           const aboutSection = document.querySelector('#about');
           const experienceSection = document.querySelector('#experience-section');
-          
+
           aboutSection?.scrollIntoView({ behavior: 'smooth' });
-          
+
           // Highlight experience section with animation
           setTimeout(() => {
             if (experienceSection) {
@@ -384,8 +411,24 @@ class Portfolio {
       });
     });
 
+    // Scroll progress bar
+    this.updateScrollProgress();
+    window.addEventListener('scroll', () => this.updateScrollProgress());
+
     // Add scroll-based animations
     this.addScrollAnimations();
+  }
+
+  private updateScrollProgress(): void {
+    const progressBar = document.getElementById('scroll-progress');
+    if (!progressBar) return;
+
+    const windowHeight = window.innerHeight;
+    const documentHeight = document.documentElement.scrollHeight;
+    const scrollTop = window.scrollY;
+    const scrollPercentage = (scrollTop / (documentHeight - windowHeight)) * 100;
+
+    progressBar.style.width = `${Math.min(scrollPercentage, 100)}%`;
   }
 
   private addScrollAnimations(): void {
