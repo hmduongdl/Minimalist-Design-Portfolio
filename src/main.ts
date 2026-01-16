@@ -1,16 +1,5 @@
 import './style.css'
 
-interface Project {
-  title: string;
-  subtitle: string;
-  problem: string;
-  solution: string;
-  features: string[];
-  technologies: string[];
-  result: string;
-  link?: string;
-}
-
 interface Experience {
   role: string;
   company: string;
@@ -297,9 +286,6 @@ class Portfolio {
       const experienceLayer = document.getElementById('experience-layer');
       const skillsLayer = document.getElementById('skills-layer');
 
-      let currentAboutLayer = 'experience';
-      let currentProjectsLayer = 1;
-
       // About Section Layer Switching
       // 0-30%: Experience
       // 30%+: Skills
@@ -310,14 +296,12 @@ class Portfolio {
           experienceLayer.style.pointerEvents = 'none';
           skillsLayer.style.opacity = '1';
           skillsLayer.style.pointerEvents = 'auto';
-          currentAboutLayer = 'skills';
         } else {
           // Switch back to Experience
           experienceLayer.style.opacity = '1';
           experienceLayer.style.pointerEvents = 'auto';
           skillsLayer.style.opacity = '0';
           skillsLayer.style.pointerEvents = 'none';
-          currentAboutLayer = 'experience';
         }
       }
     }
