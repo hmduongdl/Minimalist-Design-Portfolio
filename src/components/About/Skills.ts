@@ -4,16 +4,16 @@ import { getSkillIcon } from '../../icons';
 export const renderSkills = (): string => {
     const skills: Skill[] = [
         { name: 'TypeScript', description: '', percentage: 90, iconType: 'ts' },
-        { name: 'Node.js', description: '', percentage: 80, iconType: 'code' },
-        { name: 'Python', description: '', percentage: 70, iconType: 'code' },
-        { name: 'Vite', description: '', percentage: 85, iconType: 'code' },
-        { name: 'Ant Design', description: '', percentage: 80, iconType: 'design' },
-        { name: 'Tailwind CSS', description: '', percentage: 85, iconType: 'code' },
-        { name: 'MongoDB', description: '', percentage: 75, iconType: 'db' },
-        { name: 'PHP', description: '', percentage: 65, iconType: 'code' },
-        { name: 'WordPress', description: '', percentage: 60, iconType: 'code' },
+        { name: 'Node.js', description: '', percentage: 80, iconType: 'node' },
+        { name: 'Python', description: '', percentage: 70, iconType: 'python' },
+        { name: 'Vite', description: '', percentage: 85, iconType: 'vite' },
+        { name: 'Ant Design', description: '', percentage: 80, iconType: 'ant' },
+        { name: 'Tailwind CSS', description: '', percentage: 85, iconType: 'tailwind' },
+        { name: 'MongoDB', description: '', percentage: 75, iconType: 'mongodb' },
+        { name: 'PHP', description: '', percentage: 65, iconType: 'php' },
+        { name: 'WordPress', description: '', percentage: 60, iconType: 'wordpress' },
         { name: 'Git', description: '', percentage: 85, iconType: 'git' },
-        { name: 'Photoshop', description: '', percentage: 70, iconType: 'design' },
+        { name: 'Photoshop', description: '', percentage: 70, iconType: 'photoshop' },
     ];
 
     return `
@@ -21,6 +21,7 @@ export const renderSkills = (): string => {
       <div class="h-full overflow-y-auto pr-2 custom-scrollbar">
         
         <!-- Languages -->
+        <div class="section-reveal">
         <h2 class="text-2xl font-bold mb-4 flex items-center">
           <span class="w-2 h-2 bg-clean-accent rounded-full mr-3"></span>
           Languages
@@ -32,7 +33,7 @@ export const renderSkills = (): string => {
               <span class="text-xs text-gray-500">Native</span>
             </div>
             <div class="w-full bg-gray-200 rounded-full h-2">
-              <div class="bg-clean-accent h-2 rounded-full" style="width: 100%"></div>
+              <div class="bg-clean-accent h-2 rounded-full lang-bar-fill" data-percentage="100" style="width: 0%"></div>
             </div>
           </div>
           <div>
@@ -41,9 +42,10 @@ export const renderSkills = (): string => {
               <span class="text-xs text-gray-500">Independent</span>
             </div>
             <div class="w-full bg-gray-200 rounded-full h-2">
-              <div class="bg-clean-accent h-2 rounded-full" style="width: 60%"></div>
+              <div class="bg-clean-accent h-2 rounded-full lang-bar-fill" data-percentage="60" style="width: 0%"></div>
             </div>
           </div>
+        </div>
         </div>
 
         <!-- Tech Stack -->
@@ -52,12 +54,12 @@ export const renderSkills = (): string => {
           Tech Stack
         </h2>
         
+        <div class="section-reveal">
         <div class="grid grid-cols-2 gap-3">
           ${skills.map(skill => {
         const radius = 18;
         const circumference = 2 * Math.PI * radius;
-        const offset = circumference - (skill.percentage / 100) * circumference;
-
+        
         return `
             <div class="tech-card-glow group p-3 gap-3">
               <!-- Circular Progress (Smaller) -->
@@ -77,7 +79,8 @@ export const renderSkills = (): string => {
                     stroke-width="3" 
                     fill="none" 
                     stroke-dasharray="${circumference}" 
-                    stroke-dashoffset="${offset}"
+                    stroke-dashoffset="${circumference}"
+                    data-percentage="${skill.percentage}"
                     stroke-linecap="round"
                     class="progress-ring__circle"
                   />

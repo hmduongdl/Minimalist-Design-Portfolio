@@ -86,8 +86,12 @@
   }
 
   .progress-ring__circle {
-    transition: stroke-dashoffset 1s ease-in-out;
+    transition: stroke-dashoffset 1500ms ease-in-out;
     transform: rotate(-90deg);
     transform-origin: 50% 50%;
+  }
+  .lang-bar-fill {
+    transition: width 1500ms cubic-bezier(.2,.8,.2,1);
+    width: 0%;
   }
 }

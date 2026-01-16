@@ -11,10 +11,7 @@ export const renderNavigation = (): string => {
           </ul>
         </div>
       </div>
-      <!-- Scroll Progress Bar -->
-      <div class="absolute bottom-0 left-0 w-full h-1 bg-gray-200">
-        <div id="scroll-progress" class="h-full bg-clean-accent transition-all duration-150" style="width: 0%"></div>
-      </div>
+      <!-- Scroll Progress Bar removed from nav; moved to top-level for overlay -->
     </nav>
   `;
 };

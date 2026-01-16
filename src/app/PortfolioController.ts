@@ -17,7 +17,12 @@ export class PortfolioController {
 
     private render(): void {
         this.app.innerHTML = `
-      ${renderNavigation()}
+            <!-- Global Scroll Progress (overlays header) -->
+            <div class="fixed top-0 left-0 w-full h-1 z-[9999]" style="pointer-events:none">
+                <div id="scroll-progress" class="h-full bg-clean-accent transition-all duration-150" style="width: 0%"></div>
+            </div>
+
+            ${renderNavigation()}
       ${renderHero()}
       ${renderAbout()}
       ${renderProjects()}

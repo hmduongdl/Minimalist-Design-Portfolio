@@ -5,10 +5,71 @@ export function handleScrollReveal(): void {
 
     reveals.forEach((reveal) => {
         const elementTop = reveal.getBoundingClientRect().top;
-        if (elementTop < windowHeight - elementVisible) {
-            reveal.classList.add('active');
+        const inView = elementTop < windowHeight - elementVisible;
+
+        if (inView) {
+            if (!reveal.classList.contains('active')) {
+                reveal.classList.add('active');
+                animateSkillProgress(reveal);
+            }
+        } else {
+            if (reveal.classList.contains('active')) {
+                reveal.classList.remove('active');
+                resetSkillProgress(reveal);
+            }
         }
     });
+}
+
+export function animateSkillProgress(container: Element): void {
+    try {
+        // Animate language bars
+        const langFills = container.querySelectorAll<HTMLElement>('.lang-bar-fill');
+        langFills.forEach((el) => {
+            const pct = Number(el.dataset.percentage) || 0;
+            // small delay for nicer effect
+            setTimeout(() => {
+                el.style.width = `${pct}%`;
+            }, 100);
+        });
+
+        // Animate circular progress rings
+        const circles = container.querySelectorAll<SVGCircleElement>('.progress-ring__circle');
+        circles.forEach((circle) => {
+            const dashArray = Number(circle.getAttribute('stroke-dasharray')) || 0;
+            const pct = Number(circle.getAttribute('data-percentage')) || 0;
+            const offset = dashArray - (pct / 100) * dashArray;
+            // trigger transition
+            setTimeout(() => {
+                circle.style.strokeDashoffset = String(offset);
+            }, 100);
+        });
+    } catch (e) {
+        // silent fail to avoid breaking scroll handler
+        // eslint-disable-next-line no-console
+        console.warn('animateSkillProgress error', e);
+    }
+}
+
+export function resetSkillProgress(container: Element): void {
+    try {
+        // Reset language bars
+        const langFills = container.querySelectorAll<HTMLElement>('.lang-bar-fill');
+        langFills.forEach((el) => {
+            el.style.width = '0%';
+        });
+
+        // Reset circular progress rings to full offset
+        const circles = container.querySelectorAll<SVGCircleElement>('.progress-ring__circle');
+        circles.forEach((circle) => {
+            const dashArray = Number(circle.getAttribute('stroke-dasharray')) || 0;
+            // set to full (hidden)
+            circle.style.strokeDashoffset = String(dashArray);
+        });
+    } catch (e) {
+        // eslint-disable-next-line no-console
+        console.warn('resetSkillProgress error', e);
+    }
 }
 
 export function updateScrollProgress(progressBarId: string): void {
