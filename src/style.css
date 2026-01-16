@@ -68,8 +68,26 @@
     transform: translateY(-2px);
   }
 
+
   .gradient-text {
     @apply bg-gradient-to-r from-deep-accent to-deep-accent-alt bg-clip-text text-transparent;
   }
 
+  /* Tech Stack Card Styles - Light Theme */
+  .tech-card-glow {
+    @apply bg-white border border-gray-200 rounded-lg flex items-center transition-all duration-300;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+
+  .tech-card-glow:hover {
+    @apply border-green-500 bg-green-50;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    transform: translateY(-2px);
+  }
+
+  .progress-ring__circle {
+    transition: stroke-dashoffset 1s ease-in-out;
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+  }
 }
