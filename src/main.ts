@@ -7,6 +7,14 @@ interface Experience {
   description: string;
 }
 
+interface Skill {
+  name: string;
+  description: string;
+  percentage: number;
+  iconType: string;
+  color?: string; // Optional custom color for the ring
+}
+
 class Portfolio {
   private app: HTMLElement;
 
@@ -21,8 +29,8 @@ class Portfolio {
       ${this.renderNavigation()}
       ${this.renderHero()}
       ${this.renderAbout()}
-      <!-- ${this.renderProjects()} -->
-      <!-- ${this.renderContact()} -->
+      ${this.renderProjects()}
+      ${this.renderContact()}
       ${this.renderFooter()}
     `;
   }
@@ -66,13 +74,26 @@ class Portfolio {
         period: 'Mar 2025 - Present',
         description: 'Specializing in full-stack web development, graphic design, iterative product updates, and SEO optimization for high-performance digital experiences.'
       },
-
       {
         role: '2D Graphic Designer',
         company: 'Freelance',
         period: '',
         description: 'Conceptualized and executed creative 2D visual assets for digital and print media. Delivered branding materials, marketing collateral, and UI elements tailored to client requirements.'
       }
+    ];
+
+    const skills: Skill[] = [
+      { name: 'TypeScript', description: '', percentage: 90, iconType: 'ts' },
+      { name: 'Node.js', description: '', percentage: 80, iconType: 'code' },
+      { name: 'Python', description: '', percentage: 70, iconType: 'code' },
+      { name: 'Vite', description: '', percentage: 85, iconType: 'code' },
+      { name: 'Ant Design', description: '', percentage: 80, iconType: 'design' },
+      { name: 'Tailwind CSS', description: '', percentage: 85, iconType: 'code' },
+      { name: 'MongoDB', description: '', percentage: 75, iconType: 'db' },
+      { name: 'PHP', description: '', percentage: 65, iconType: 'code' },
+      { name: 'WordPress', description: '', percentage: 60, iconType: 'code' },
+      { name: 'Git', description: '', percentage: 85, iconType: 'git' },
+      { name: 'Photoshop', description: '', percentage: 70, iconType: 'design' },
     ];
 
     return `
@@ -91,7 +112,7 @@ class Portfolio {
           <div class="container-custom relative z-10 w-full">
             <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-10 md:gap-16 lg:gap-24 items-stretch">
               <!-- Left Column: Avatar and About Me -->
-              <div class="bg-white/90 backdrop-blur-sm rounded-xl p-6 md:px-8 md:py-6 shadow-lg relative overflow-hidden h-full flex flex-col">
+              <div class="bg-white/90 backdrop-blur-sm rounded-xl p-6 md:px-8 md:py-6 shadow-lg relative h-full flex flex-col">
                 <!-- Avatar with Signature Overlay -->
                 <div class="relative w-auto mx-auto overflow-visible" style="width: 256px; margin-bottom: 43px; margin-top: 0;">
                   <!-- Avatar -->
@@ -135,12 +156,12 @@ class Portfolio {
                       <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                     </svg>
                   </a>
-                  <a href="mailto:hoanglong.workdl@gmail.com" class="w-10 h-10 rounded-full border-2 border-gray-300 hover:border-red-500 hover:bg-red-50 hover:scale-110 flex items-center justify-center transition-all group">
+                  <a href="#" data-action="mailto" data-user="hoanglong.workdl" data-domain="gmail.com" class="w-10 h-10 rounded-full border-2 border-gray-300 hover:border-red-500 hover:bg-red-50 hover:scale-110 flex items-center justify-center transition-all group" role="button">
                     <svg class="w-5 h-5 text-gray-600 group-hover:text-red-500" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                       <path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
                     </svg>
                   </a>
-                  <a href="tel:+84911818016" class="w-10 h-10 rounded-full border-2 border-gray-300 hover:border-green-600 hover:bg-green-50 hover:scale-110 flex items-center justify-center transition-all group">
+                  <a href="#" data-action="tel" data-tel="+84911818016" class="w-10 h-10 rounded-full border-2 border-gray-300 hover:border-green-600 hover:bg-green-50 hover:scale-110 flex items-center justify-center transition-all group" role="button">
                     <svg class="w-5 h-5 text-gray-600 group-hover:text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
                     </svg>
@@ -149,7 +170,7 @@ class Portfolio {
                 
               </div>
   
-              <!-- Right Column: Layered Content (Experience / Languages & Tech Stack) -->
+              <!-- Right Column: Layered Content (Experience / Tech Stack) -->
               <div class="grid grid-cols-1">
                 
                 <!-- Layer 1: Experience -->
@@ -174,10 +195,11 @@ class Portfolio {
                   </div>
                 </div>
   
-                <!-- Layer 2: Languages & Tech Stack -->
+                <!-- Layer 2: Tech Stack (New Design) -->
                 <div id="skills-layer" class="col-start-1 row-start-1 transition-all duration-700 ease-in-out" style="opacity: 0; pointer-events: none;">
-                  <div>
-                    <!-- Languages -->
+                  <div class="h-full overflow-y-auto pr-2 custom-scrollbar">
+                    
+                    <!-- Languages (Restored) -->
                     <h2 class="text-2xl font-bold mb-4 flex items-center">
                       <span class="w-2 h-2 bg-clean-accent rounded-full mr-3"></span>
                       Languages
@@ -202,16 +224,61 @@ class Portfolio {
                         </div>
                       </div>
                     </div>
-  
+
                     <!-- Tech Stack -->
                     <h2 class="text-2xl font-bold mb-4 flex items-center">
                       <span class="w-2 h-2 bg-clean-accent rounded-full mr-3"></span>
                       Tech Stack
                     </h2>
-                    <div class="flex flex-wrap gap-3">
-                      ${['TypeScript', 'Node.js', 'Python', 'Ionic Framework', 'Tailwind CSS', 'PHP', 'Git', 'Adobe Photoshop']
-        .map(skill => `<span class="tech-tag hover:border-clean-accent hover:text-clean-accent transition-colors cursor-default">${skill}</span>`)
-        .join('')}
+                    
+                    <!-- Compact Grid: 2 cols on slightly larger small screens, gap reduced -->
+                    <div class="grid grid-cols-2 gap-3">
+                      ${skills.map(skill => {
+      // Smaller radius for compact design
+      const radius = 18;
+      const circumference = 2 * Math.PI * radius;
+      const offset = circumference - (skill.percentage / 100) * circumference;
+
+      return `
+                        <div class="tech-card-glow group p-3 gap-3">
+                          <!-- Circular Progress (Smaller) -->
+                          <div class="relative w-12 h-12 flex-shrink-0">
+                            <!-- Glow (Subtle) -->
+                            <div class="absolute inset-0 bg-green-400 rounded-full blur opacity-10 group-hover:opacity-20 transition-opacity"></div>
+                            
+                            <svg class="transform -rotate-90 w-12 h-12 relative z-10">
+                              <!-- Track (Light Gray) -->
+                              <circle cx="24" cy="24" r="${radius}" stroke="#e5e7eb" stroke-width="3" fill="none" />
+                              <!-- Progress -->
+                              <circle 
+                                cx="24" 
+                                cy="24" 
+                                r="${radius}" 
+                                stroke="#22c55e" 
+                                stroke-width="3" 
+                                fill="none" 
+                                stroke-dasharray="${circumference}" 
+                                stroke-dashoffset="${offset}"
+                                stroke-linecap="round"
+                                class="progress-ring__circle"
+                              />
+                            </svg>
+                            
+                            <!-- Icon/Logo Center (Smaller) -->
+                            <div class="absolute inset-0 flex items-center justify-center text-green-600 z-20">
+                              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                ${this.getSkillIcon(skill.iconType)}
+                              </svg>
+                            </div>
+                          </div>
+                          
+                          <!-- Text Info (No Description) -->
+                          <div class="flex-1 min-w-0 flex items-center">
+                            <h3 class="text-gray-900 font-bold text-sm truncate group-hover:text-green-600 transition-colors">${skill.name}</h3>
+                          </div>
+                        </div>
+                        `;
+    }).join('')}
                     </div>
                   </div>
                 </div>
@@ -247,6 +314,28 @@ class Portfolio {
     // Initial check
     this.handleScroll();
     this.addLayerSwitchingAnimation();
+
+    // Handle obfuscated contact links (mailto/tel)
+    (document.querySelectorAll('a[data-action="mailto"]') as NodeListOf<HTMLAnchorElement>).forEach((el) => {
+      el.addEventListener('click', (e) => {
+        e.preventDefault();
+        const user = el.dataset.user;
+        const domain = el.dataset.domain;
+        if (user && domain) {
+          window.location.href = `mailto:${user}@${domain}`;
+        }
+      });
+    });
+
+    (document.querySelectorAll('a[data-action="tel"]') as NodeListOf<HTMLAnchorElement>).forEach((el) => {
+      el.addEventListener('click', (e) => {
+        e.preventDefault();
+        const tel = el.dataset.tel;
+        if (tel) {
+          window.location.href = `tel:${tel}`;
+        }
+      });
+    });
   }
 
   private handleScroll(): void {
@@ -305,6 +394,18 @@ class Portfolio {
         }
       }
     }
+  }
+  private getSkillIcon(type: string): string {
+    const icons: Record<string, string> = {
+      react: '<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/><circle cx="12" cy="12" r="2"/><ellipse cx="12" cy="12" rx="3" ry="8" transform="rotate(45 12 12)" stroke="currentColor" fill="none"/><ellipse cx="12" cy="12" rx="3" ry="8" transform="rotate(-45 12 12)" stroke="currentColor" fill="none"/>',
+      ts: '<path d="M4 2h16a2 2 0 012 2v16a2 2 0 01-2 2H4a2 2 0 01-2-2V4a2 2 0 012-2zm2 18h12v-2H6v2zm3-12h2v6h-2V8zm6 0h2v6h-2V8z"/>', // Simplified placeholder
+      js: '<path d="M4 2h16a2 2 0 012 2v16a2 2 0 01-2 2H4a2 2 0 01-2-2V4a2 2 0 012-2zm2 18h12v-2H6v2zm4-6h2v4h-2v-4zm4-4h2v8h-2v-8z"/>', // Simplified placeholder
+      code: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />',
+      db: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />',
+      design: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />',
+      git: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />'
+    };
+    return icons[type] || icons['code'];
   }
 }
 
