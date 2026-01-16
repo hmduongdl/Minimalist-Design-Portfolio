@@ -33,6 +33,31 @@ npm run build
 npm run preview
 ```
 
+## Deployment
+
+### Cloudflare Pages
+
+1. **Connect your repository** to Cloudflare Pages
+2. **Build settings:**
+   - Build command: `npm run build`
+   - Build output directory: `dist`
+   - Root directory: `/`
+
+3. **Environment variables:** None required
+
+The build will automatically include:
+- `_headers` - Security headers configuration
+- `_redirects` - SPA routing support
+
+### Alternative: Manual Deploy
+
+```bash
+# Build the project
+npm run build
+
+# The dist/ folder is ready to deploy to any static hosting service
+```
+
 ## Customization
 
 Edit the content in `src/main.ts` to personalize your portfolio:
