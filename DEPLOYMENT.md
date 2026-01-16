@@ -17,16 +17,13 @@
   - [x] `npm run build` - Production build
   - [x] `npm run preview` - Preview build
 
-### 3. Cloudflare Configuration
-- [x] `wrangler.jsonc` created
-  - [x] Project name set
-  - [x] Compatibility date set
-  - [x] Assets directory pointing to `./dist`
+### 3. Vercel Configuration
+- [x] `vercel.json` created
+  - [x] SPA Rewrites configured (`source: "/(.*)"` → `destination: "/index.html"`)
+  - [x] Caching Headers configured for assets & images
 
 ### 4. Static Assets
 - [x] All assets in `public/` folder
-  - [x] `_headers` - Security headers
-  - [x] `_redirects` - SPA routing
   - [x] `img/my-avatar.jpg` - Avatar image
   - [x] `img/signature.png` - Signature image
   - [x] `profile-background.jpg` - Background image
@@ -45,42 +42,35 @@
   - [x] Log files
 
 ### 7. Documentation
-- [x] `README.md` with deployment instructions
+- [x] `README.md` with Vercel deployment instructions
 - [x] `STRUCTURE.md` with project structure
 - [x] This checklist file
 
 ## 🚀 Deployment Steps
 
-### Cloudflare Pages (Recommended)
+### Method 1: Vercel Dashboard (Easiest)
 
 1. **Push to Git Repository**
    ```bash
    git add .
-   git commit -m "Ready for deployment"
+   git commit -m "Ready for Vercel deployment"
    git push origin main
    ```
 
-2. **Connect to Cloudflare Pages**
-   - Go to [Cloudflare Pages Dashboard](https://dash.cloudflare.com/)
-   - Click "Create a project"
-   - Connect your Git repository
-   - Select your repository
+2. **Import Project**
+   - Go to [Vercel Dashboard](https://vercel.com/dashboard)
+   - Click **Add New...** > **Project**
+   - Import your GitHub repository
 
-3. **Configure Build Settings**
-   - **Framework preset**: None (or Vite)
-   - **Build command**: `npm run build`
-   - **Build output directory**: `dist`
-   - **Root directory**: `/`
-   - **Environment variables**: None required
+3. **Configure Building**
+   - Framework Preset: **Vite** (Auto-detected)
+   - Build Command: `npm run build`
+   - Output Directory: `dist`
+   - **Deploy**
 
-4. **Deploy**
-   - Click "Save and Deploy"
-   - Wait for build to complete
-   - Your site will be live!
+### Method 2: Vercel CLI
 
-### Alternative: Vercel
-
-1. **Install Vercel CLI** (optional)
+1. **Install CLI**
    ```bash
    npm i -g vercel
    ```
@@ -89,65 +79,26 @@
    ```bash
    vercel
    ```
-   Or connect via Vercel dashboard
-
-### Alternative: Netlify
-
-1. **Drag and Drop**
-   - Build locally: `npm run build`
-   - Drag `dist/` folder to Netlify
-
-2. **Or Connect Git**
-   - Build command: `npm run build`
-   - Publish directory: `dist`
+   Follow the prompts to link and deploy your project.
 
 ## 📋 Post-Deployment
 
-- [ ] Test all pages load correctly
-- [ ] Verify images display properly
-- [ ] Check scroll animations work
-- [ ] Test layer switching on scroll
-- [ ] Verify social links work
-- [ ] Test on mobile devices
-- [ ] Check SEO meta tags
-- [ ] Test page load speed
+- [ ] Test page load speed (Vercel Edge Network is fast!)
+- [ ] Verify images load correctly with caching headers
+- [ ] Test SPA navigation (refreshing on sub-pages shouldn't 404)
+- [ ] Check scroll animations
+- [ ] Verify social links
 
 ## 🔧 Troubleshooting
 
 ### Build Fails
-- Run `npm run build` locally to check for errors
-- Check TypeScript compilation: `npx tsc --noEmit`
-- Verify all dependencies installed: `npm install`
+- Run `npm run build` locally first
+- Check `npx tsc --noEmit` for TypeScript errors
+
+### 404 on Refresh
+- Ensure `vercel.json` exists in root
+- Check rewrite rules: `"source": "/(.*)"` to `"/index.html"`
 
 ### Assets Not Loading
-- Ensure all assets are in `public/` folder
-- Check file paths in `src/main.ts`
-- Verify `vite.config.ts` has correct `publicDir`
-
-### Cloudflare Pages Errors
-
-**"Missing entry-point to Worker script or to assets directory"**
-- ✅ Ensure `wrangler.jsonc` exists in root directory
-- ✅ Verify `wrangler.jsonc` has correct configuration:
-  ```json
-  {
-    "name": "portfolio-minimalist",
-    "compatibility_date": "2026-01-16",
-    "assets": {
-      "directory": "./dist"
-    }
-  }
-  ```
-- Check build output directory is `dist`
-- Verify `_headers` and `_redirects` are in `public/`
-- Ensure `npm run build` completes successfully before deploying
-
-## 📊 Current Status
-
-**Last Build**: Successful ✅
-**Build Output**: `dist/` folder ready
-**Assets**: All copied correctly
-**Configuration**: Optimized for Cloudflare Pages
-**Documentation**: Complete
-
-**Ready to Deploy**: ✅ YES
+- Check `vite.config.ts` publicDir setting
+- Verify assets exist in `public/` folder
