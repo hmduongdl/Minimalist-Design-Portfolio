@@ -7,10 +7,10 @@ export const renderAbout = (): string => {
     <section id="about" class="relative overflow-x-hidden" style="min-height: 100vh;">
       
       <!-- Sticky Container: Desktop only, normal flow on mobile -->
-      <div class="md:sticky md:top-0 h-auto md:h-screen flex items-start overflow-x-hidden pt-[46px] md:pt-[54px] pb-6 md:pb-0">
+      <div class="md:sticky md:top-0 h-auto md:h-screen flex items-start overflow-x-hidden pt-[46px] md:pt-[54px] pb-6 md:pb-0 bg-gray-100 md:bg-transparent">
       
-        <!-- Background Image with Blur (Absolute to sticky container) -->
-        <div id="about-bg" class="absolute inset-0 -z-10">
+        <!-- Background Image with Blur (Desktop only) -->
+        <div id="about-bg" class="absolute inset-0 -z-10 hidden md:block">
           <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" style="background-image: url('/profile-background.jpg'); filter: blur(8px); transform: scale(1.1);"></div>
           <div class="absolute inset-0 bg-white/80"></div>
         </div>

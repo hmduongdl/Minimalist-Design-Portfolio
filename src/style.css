@@ -191,6 +191,50 @@
     display: none;
   }
 
+  /* About section - hide scrollbars on mobile */
+  #about-right {
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE/Edge */
+  }
+
+  #about-right::-webkit-scrollbar {
+    display: none;
+    /* Chrome/Safari */
+  }
+
+  /* Hide scrollbar for carousel track */
+  #carousel-track {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  #carousel-track::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Remove any borders/shadows on mobile */
+  @media (max-width: 768px) {
+
+    #about-left,
+    #about-right {
+      box-shadow: none;
+      border: none;
+    }
+
+    /* Ensure no scrollbar appears on mobile */
+    #about-right>div {
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    #about-right>div::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+
 
   /* Hidden continuous progress bar (beneath visible snapping bar) */
   #scroll-progress-hidden {
