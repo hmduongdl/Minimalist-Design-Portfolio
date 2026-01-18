@@ -7,6 +7,7 @@ import { renderThankYou } from '../components/ThankYou';
 import { handleScrollReveal } from '../utils/scroll';
 import { initNavigation } from '../utils/navigation';
 import { initAboutCarousel } from '../utils/aboutCarousel';
+import { renderStickySocialButton, initStickySocialButton } from '../components/StickySocialButton';
 
 export class PortfolioController {
     private app: HTMLElement;
@@ -30,12 +31,16 @@ export class PortfolioController {
             ${renderProjects()}
             ${renderContact()}
             ${renderThankYou()}
+            ${renderStickySocialButton()}
         `;
     }
 
     private addEventListeners(): void {
         // Initialize About section carousel
         initAboutCarousel();
+
+        // Initialize Sticky Social Button
+        initStickySocialButton();
 
         // Handle scroll for progress bar and nav highlighting
         const progressBar = document.getElementById('scroll-progress');

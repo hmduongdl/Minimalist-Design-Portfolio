@@ -304,26 +304,151 @@
   }
 }
 
+/* Glow effect for social icons */
+.social-icon {
+  color: #00ff00;
+  /* Bright green color */
+  text-shadow: 0 0 8px #00ff00, 0 0 16px #00ff00, 0 0 24px #00ff00;
+  transition: transform 0.3s ease, text-shadow 0.3s ease;
+  font-size: 20px;
+  /* Set size to 20px */
+}
+
+.social-icon:hover {
+  transform: scale(1.1);
+  /* Slightly enlarge on hover */
+  text-shadow: 0 0 12px #00ff00, 0 0 24px #00ff00, 0 0 36px #00ff00;
+}
+
+/* Adjust padding for social icons on mobile */
+@media (max-width: 767px) {
+  .social-icon {
+    padding: 2px;
+    /* Reduce padding to 2px */
+  }
+}
+
+/* Bold text for stats */
+.stats-container .stat-item p {
+  font-weight: bold;
+  /* Make text bold */
+}
 
 
 
 @layer base {
   html {
     scroll-behavior: smooth;
-    scrollbar-width: none;
-    /* Enable vertical scroll snapping across sections - DISABLED to fix stuck scroll */
-    /* scroll-snap-type: y mandatory; */
-    /* Hide scrollbar Firefox */
   }
 
-  html::-webkit-scrollbar {
-    display: none;
-    /* Hide scrollbar Chrome/Safari/Opera */
+  /* Enable scrollbar for desktop, disable for mobile */
+  @media (min-width: 768px) {
+
+    html,
+    body {
+      scrollbar-width: auto;
+      /* Enable scrollbar for Firefox */
+      -ms-overflow-style: auto;
+      /* Enable scrollbar for IE/Edge */
+    }
+
+    html::-webkit-scrollbar,
+    body::-webkit_scrollbar {
+      display: block;
+      /* Enable scrollbar for Chrome/Safari */
+    }
+
+    #about-right,
+    #carousel-track {
+      scrollbar-width: auto;
+      -ms-overflow-style: auto;
+    }
+
+    #about-right::-webkit-scrollbar,
+    #carousel-track::-webkit_scrollbar {
+      display: block;
+    }
   }
 
-  body {
-    @apply font-sans;
-    -ms-overflow-style: none;
-    /* Hide scrollbar IE/Edge */
+  @media (max-width: 767px) {
+
+    html,
+    body {
+      scrollbar-width: none;
+      /* Hide scrollbar for Firefox */
+      -ms-overflow-style: none;
+      /* Hide scrollbar for IE/Edge */
+    }
+
+    html::-webkit-scrollbar,
+    body::-webkit_scrollbar {
+      display: none;
+      /* Hide scrollbar for Chrome/Safari */
+    }
+
+    #about-right,
+    #carousel-track {
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    #about-right::-webkit-scrollbar,
+    #carousel-track::-webkit_scrollbar {
+      display: none;
+    }
+  }
+
+  /* Custom scrollbar styling for better contrast */
+  @media (min-width: 768px) {
+
+    html::-webkit-scrollbar,
+    body::-webkit_scrollbar {
+      width: 12px;
+      /* Width of the scrollbar */
+    }
+
+    html::-webkit-scrollbar-track,
+    body::-webkit_scrollbar-track {
+      background: #f3f4f6;
+      /* Light background for contrast */
+    }
+
+    html::-webkit-scrollbar-thumb,
+    body::-webkit_scrollbar-thumb {
+      background: #4b5563;
+      /* Darker thumb for contrast */
+      border-radius: 6px;
+      /* Rounded corners for thumb */
+    }
+
+    html::-webkit-scrollbar-thumb:hover,
+    body::-webkit_scrollbar-thumb:hover {
+      background: #374151;
+      /* Slightly darker on hover */
+    }
+
+    #about-right::-webkit_scrollbar,
+    #carousel-track::-webkit_scrollbar {
+      width: 10px;
+    }
+
+    #about-right::-webkit_scrollbar-track,
+    #carousel-track::-webkit_scrollbar-track {
+      background: #e5e7eb;
+      /* Light gray background */
+    }
+
+    #about-right::-webkit_scrollbar-thumb,
+    #carousel-track::-webkit_scrollbar-thumb {
+      background: #6b7280;
+      /* Medium gray thumb */
+      border-radius: 5px;
+    }
+
+    #about-right::-webkit_scrollbar-thumb:hover,
+    #carousel-track::-webkit_scrollbar-thumb:hover {
+      background: #4b5563;
+      /* Darker gray on hover */
+    }
   }
 }
