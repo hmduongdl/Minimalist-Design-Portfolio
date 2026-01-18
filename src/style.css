@@ -177,7 +177,7 @@
     padding-top: calc(54px + 6rem);
     padding-bottom: 6rem;
     box-sizing: border-box;
-    background: linear-gradient(to bottom right, #f9fafb 0%, #f3f4f6 100%);
+    background-color: #f3f4f6;
   }
 
   @media (max-width: 768px) {
