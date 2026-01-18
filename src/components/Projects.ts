@@ -1,9 +1,8 @@
 export const renderProjects = (): string => {
     return `
-            <section id="projects" class="section bg-clean-bg relative z-50">
+            <section id="projects" class="section relative z-50">
                 <div class="container-custom">
-                    <h2 class="text-2xl font-bold mb-6 flex items-center">
-                        <span class="w-2 h-2 bg-clean-accent rounded-full mr-3"></span>
+                    <h2 class="text-2xl font-bold mb-6 text-center">
                         Projects
                     </h2>
 

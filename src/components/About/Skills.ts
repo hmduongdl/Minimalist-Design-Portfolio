@@ -2,21 +2,20 @@ import { Skill } from '../../types';
 import { getSkillIcon } from '../../icons';
 
 export const renderSkills = (): string => {
-    const skills: Skill[] = [
-        { name: 'TypeScript', description: '', percentage: 90, iconType: 'ts' },
-        { name: 'Node.js', description: '', percentage: 80, iconType: 'node' },
-        { name: 'Python', description: '', percentage: 70, iconType: 'python' },
-        { name: 'Vite', description: '', percentage: 85, iconType: 'vite' },
-        { name: 'Ant Design', description: '', percentage: 80, iconType: 'ant' },
-        { name: 'Tailwind CSS', description: '', percentage: 85, iconType: 'tailwind' },
-        { name: 'MongoDB', description: '', percentage: 75, iconType: 'mongodb' },
-        { name: 'PHP', description: '', percentage: 65, iconType: 'php' },
-        { name: 'WordPress', description: '', percentage: 60, iconType: 'wordpress' },
-        { name: 'Git', description: '', percentage: 85, iconType: 'git' },
-        { name: 'Photoshop', description: '', percentage: 70, iconType: 'photoshop' },
-    ];
+  const skills: Skill[] = [
+    { name: 'TypeScript', description: '', percentage: 90, iconType: 'ts' },
+    { name: 'Node.js', description: '', percentage: 80, iconType: 'node' },
+    { name: 'Python', description: '', percentage: 70, iconType: 'python' },
+    { name: 'Vite', description: '', percentage: 85, iconType: 'vite' },
+    { name: 'Ant Design', description: '', percentage: 80, iconType: 'ant' },
+    { name: 'Tailwind CSS', description: '', percentage: 85, iconType: 'tailwind' },
+    { name: 'MongoDB', description: '', percentage: 75, iconType: 'mongodb' },
+    { name: 'PHP', description: '', percentage: 65, iconType: 'php' },
+    { name: 'Git', description: '', percentage: 85, iconType: 'git' },
+    { name: 'Photoshop', description: '', percentage: 70, iconType: 'photoshop' },
+  ];
 
-    return `
+  return `
     <div id="skills-layer" class="col-start-1 row-start-1 transition-all duration-700 ease-in-out" style="opacity: 0; pointer-events: none;">
       <div class="h-full overflow-y-auto pr-2 custom-scrollbar">
         
@@ -57,10 +56,10 @@ export const renderSkills = (): string => {
         <div class="section-reveal">
         <div class="grid grid-cols-2 gap-3">
           ${skills.map(skill => {
-        const radius = 18;
-        const circumference = 2 * Math.PI * radius;
-        
-        return `
+    const radius = 18;
+    const circumference = 2 * Math.PI * radius;
+
+    return `
             <div class="tech-card-glow group p-3 gap-3">
               <!-- Circular Progress (Smaller) -->
               <div class="relative w-12 h-12 flex-shrink-0">
@@ -100,7 +99,7 @@ export const renderSkills = (): string => {
               </div>
             </div>
             `;
-    }).join('')}
+  }).join('')}
         </div>
       </div>
     </div>

@@ -1,14 +1,13 @@
 export const renderContact = (): string => {
     return `
-    <section id="contact" class="section bg-gradient-to-br from-white to-gray-50 text-gray-800 relative z-[55]">
+    <section id="contact" class="section text-gray-800 relative z-[55]">
         <div class="container-custom py-20 h-full flex flex-col justify-center">
             
             <div class="mb-12">
-                <h2 class="text-3xl font-bold mb-4 flex items-center">
-                    <span class="w-3 h-3 bg-green-500 rounded-full mr-4"></span>
+                <h2 class="text-3xl font-bold mb-4 text-center">
                     Contact
                 </h2>
-                <p class="text-gray-600 text-lg max-w-2xl">
+                <p class="text-gray-600 text-lg max-w-2xl mx-auto text-center">
                     I'm currently looking for new opportunities. Whether you have a question or just want to say hi, I'll try my best to get back to you!
                 </p>
             </div>
@@ -83,12 +82,7 @@ export const renderContact = (): string => {
                 </div>
             </div>
 
-                <footer class="mt-20 pt-8 border-t border-gray-200 text-center">
-                      <div class="flex justify-center gap-4 text-gray-400">
-                          <a href="#" class="hover:text-gray-600 transition-colors">Privacy</a>
-                          <a href="#" class="hover:text-gray-600 transition-colors">Terms</a>
-                      </div>
-                </footer>
+
         </div>
     </section>
     `;
