@@ -1,10 +1,10 @@
 export const renderContact = (): string => {
     return `
     <section id="contact" class="section bg-white relative z-[55]">
-        <div class="container-custom py-24 h-full">
+        <div class="container-custom h-auto">
             
             <!-- Header -->
-            <div class="mb-14 text-center">
+            <div class="mb-8 text-center">
                 <h2 class="text-4xl md:text-5xl font-bold mb-4 text-gray-900 font-serif tracking-tight">
                     Get In Touch
                 </h2>
@@ -13,78 +13,85 @@ export const renderContact = (): string => {
                 </p>
             </div>
 
-            <!-- Content Card -->
-            <div class="max-w-5xl mx-auto">
-                <div class="flex flex-col md:flex-row gap-8 md:gap-20 items-center justify-center">
+                <!-- Main Layout -->
+                <div class="flex flex-col gap-0">
                     
-                    <!-- Left: QR Code Card -->
-                    <div class="relative mx-auto md:mx-0 max-w-[280px] w-full">
-                        <!-- Decorative Blob (Static) -->
-                        <div class="absolute -inset-4 bg-clean-accent/5 rounded-[2.5rem] transform -rotate-2 scale-105"></div>
+                    <!-- TOP ROW: ZONE 1 (QR) | ZONES 2+3 (Header + Steps) -->
+                    <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10 items-start">
                         
-                        <div class="relative bg-white p-6 rounded-[2rem] shadow-lg border border-gray-100 text-center">
-                            <div class="aspect-square w-full bg-white rounded-2xl overflow-hidden mb-6 border-2 border-dashed border-gray-200 flex items-center justify-center p-2 relative">
-                                <img src="/img/zalo-contact-qr.jpg" 
-                                     alt="Zalo QR Code" 
-                                     class="w-full h-full object-contain"
-                                >
-                            </div>
-                            <p class="text-gray-500 font-medium flex items-center justify-center gap-2">
-                                Scan with camera or Zalo app
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Right: Instructions & Actions -->
-                    <div class="space-y-10">
-                        <div>
-                            <h3 class="text-3xl font-bold flex items-center gap-3 text-clean-accent mb-8">
-                                <img src="https://img.icons8.com/?size=128&id=ipvR9njjOZmB&format=png" alt="Zalo" class="w-10 h-10 object-contain">
-                                Hoàng Minh Dương
-                            </h3>
-
-                            <div class="space-y-8">
-                                <div class="flex gap-5">
-                                    <div class="flex-shrink-0 w-10 h-10 rounded-full bg-clean-accent text-white flex items-center justify-center font-bold text-base shadow-md">1</div>
-                                    <div class="pt-1">
-                                        <h4 class="font-bold text-gray-900 text-lg mb-1">Mở ứng dụng Zalo</h4>
-                                        <p class="text-gray-500">Trên điện thoại hoặc máy tính của bạn</p>
-                                    </div>
+                        <!-- ===================== ZONE 1: QR Code Card ===================== -->
+                        <div class="md:col-span-5">
+                            <div class="bg-white p-4 rounded-3xl shadow-lg border border-gray-100 flex flex-col items-center justify-center text-center">
+                                <!-- QR Container -->
+                                <div class="w-full max-w-[240px] aspect-square bg-white rounded-2xl overflow-hidden mb-3 border-2 border-dashed border-gray-200 p-2">
+                                    <img src="/img/zalo-contact-qr.jpg" 
+                                         alt="Zalo QR Code" 
+                                         class="w-full h-full object-contain"
+                                    >
                                 </div>
-                                <div class="flex gap-5">
-                                    <div class="flex-shrink-0 w-10 h-10 rounded-full bg-clean-accent text-white flex items-center justify-center font-bold text-base shadow-md">2</div>
-                                    <div class="pt-1">
-                                        <h4 class="font-bold text-gray-900 text-lg mb-1">Chọn "Quét mã QR"</h4>
-                                        <p class="text-gray-500">Nằm ở góc trên bên phải màn hình</p>
-                                    </div>
-                                </div>
-                                <div class="flex gap-5">
-                                    <div class="flex-shrink-0 w-10 h-10 rounded-full bg-clean-accent text-white flex items-center justify-center font-bold text-base shadow-md">3</div>
-                                    <div class="pt-1">
-                                        <h4 class="font-bold text-gray-900 text-lg mb-1">Hướng camera vào mã QR</h4>
-                                        <p class="text-gray-500">Và bắt đầu trò chuyện ngay với tôi</p>
-                                    </div>
-                                </div>
+                                
+                                <!-- Text -->
+                                <p class="text-gray-500 font-medium text-sm">
+                                    Scan with camera or Zalo app
+                                </p>
                             </div>
                         </div>
 
-                        <div class="flex flex-wrap gap-3 pt-6 border-t border-gray-100">
-                            <!-- Download Button -->
-                            <button id="btn-download-qr" class="inline-flex items-center gap-2 px-6 py-3.5 bg-clean-accent text-white rounded-xl shadow-lg font-medium border border-transparent">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
-                                Tải xuống QR
-                            </button>
+                        <!-- ===================== Right Column: ZONES 2 + 3 ===================== -->
+                        <div class="md:col-span-7 flex flex-col gap-6">
                             
-                            <!-- Copy Link Button -->
-                            <button id="btn-copy-link" class="inline-flex items-center gap-2 px-6 py-3.5 bg-white border border-gray-200 text-gray-700 rounded-xl font-medium shadow-sm">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg>
-                                Sao chép link
-                            </button>
+                            <!-- ===================== ZONE 2: Name Header (Rounded Pill) ===================== -->
+                            <div class="bg-emerald-600 rounded-full py-1 px-2 inline-flex items-center gap-2 shadow-md">
+                                <div class="w-12 h-12 flex items-center justify-center flex-shrink-0">
+                                     <img src="/icons8-zalo-64.png" alt="Zalo" class="w-full h-full object-contain">
+                                </div>
+                                <h3 class="text-xl md:text-2xl font-bold text-white leading-tight whitespace-nowrap">
+                                    Hoàng Minh Dương
+                                </h3>
+                            </div>
+
+                            <!-- ===================== ZONE 3: Steps List ===================== -->
+                            <div class="space-y-5">
+                                <div class="flex gap-4 items-start">
+                                    <div class="flex-shrink-0 w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold text-sm shadow-md">1</div>
+                                    <div>
+                                        <h4 class="font-bold text-gray-900 text-lg leading-tight">Mở ứng dụng Zalo</h4>
+                                        <p class="text-gray-500 text-base mt-1">Trên điện thoại hoặc máy tính của bạn</p>
+                                    </div>
+                                </div>
+                                <div class="flex gap-4 items-start">
+                                    <div class="flex-shrink-0 w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold text-sm shadow-md">2</div>
+                                    <div>
+                                        <h4 class="font-bold text-gray-900 text-lg leading-tight">Chọn "Quét mã QR"</h4>
+                                        <p class="text-gray-500 text-base mt-1">Nằm ở góc trên bên phải màn hình</p>
+                                    </div>
+                                </div>
+                                <div class="flex gap-4 items-start">
+                                    <div class="flex-shrink-0 w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold text-sm shadow-md">3</div>
+                                    <div>
+                                        <h4 class="font-bold text-gray-900 text-lg leading-tight">Hướng camera vào mã QR</h4>
+                                        <p class="text-gray-500 text-base mt-1">Và bắt đầu trò chuyện ngay với tôi</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
+                    <!-- ===================== ZONE 4: Action Buttons (FULL WIDTH - Separate Row) ===================== -->
+                    <div class="pt-2 border-t border-gray-100 flex flex-wrap gap-3 items-center justify-end">
+                        <!-- Download Button -->
+                        <button id="btn-download-qr" class="inline-flex items-center gap-2 px-5 py-3 bg-emerald-600 text-white rounded-xl shadow-md font-medium hover:bg-emerald-700 transition-all">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                            Tải xuống QR
+                        </button>
+                        
+                        <!-- Copy Link Button -->
+                        <button id="btn-copy-link" class="inline-flex items-center gap-2 px-5 py-3 bg-white border border-gray-200 text-gray-700 rounded-xl font-medium shadow-sm hover:bg-gray-50 transition-all">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg>
+                            Sao chép link
+                        </button>
+                    </div>
                 </div>
-            </div>
 
         </div>
     </section>

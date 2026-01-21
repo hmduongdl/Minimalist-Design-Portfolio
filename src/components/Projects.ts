@@ -2,9 +2,9 @@ export const renderProjects = (): string => {
     return `
             <section id="projects" class="section relative z-50">
                 <div class="container-custom">
-                    <h2 class="text-2xl font-bold mb-6 text-center">
-                        Projects
-                    </h2>
+                <h2 class="text-4xl md:text-5xl font-bold mb-4 text-gray-900 font-serif tracking-tight text-center">
+                    Projects
+                </h2>
 
                     <div class="projects-grid">
                         <article class="project-card flex flex-col h-full">

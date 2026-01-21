@@ -103,7 +103,5 @@ export const renderAbout = (): string => {
       </div>
     </section>
     
-
-
   `;
 };

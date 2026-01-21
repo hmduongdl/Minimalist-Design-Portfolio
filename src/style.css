@@ -8,7 +8,7 @@
     @apply flex items-center justify-center;
     /* Reduced vertical spacing for denser layout */
     @apply px-2 py-6 sm:px-5 sm:py-8 md:py-8 lg:px-5;
-    min-height: 80vh;
+    min-height: auto;
     /* Align sections to scroll-snap */
     scroll-snap-align: start;
   }
@@ -168,21 +168,21 @@
   /* Contact section - standard scroll flow with alternating background */
   #contact {
     position: relative;
-    min-height: 100vh;
+    min-height: auto;
     z-index: 10;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
-    padding-top: calc(54px + 6rem);
-    padding-bottom: 6rem;
+    padding-top: calc(24px);
+    padding-bottom: 24px;
     box-sizing: border-box;
     background-color: #f3f4f6;
   }
 
   @media (max-width: 768px) {
     #contact {
-      padding-top: calc(46px + 4rem);
-      padding-bottom: 4rem;
+      padding-top: calc(46px + 10px);
+      padding-bottom: 25px;
     }
   }
 
@@ -264,43 +264,43 @@
 /* Projects section - standard scroll flow with alternating background */
 #projects {
   position: relative;
-  min-height: 100vh;
+  min-height: auto;
   z-index: 10;
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  padding-top: calc(20px + 0.5rem);
-  padding-bottom: 2rem;
+  padding-top: calc(24px);
+  padding-bottom: 24px;
   box-sizing: border-box;
   background-color: white;
 }
 
 @media (max-width: 768px) {
   #projects {
-    padding-top: calc(46px + 0.5rem);
-    padding-bottom: 1.5rem;
+    padding-top: calc(24px);
+    padding-bottom: 24px;
   }
 }
 
 #projects.section {
-  min-height: 100vh;
+  min-height: auto;
   height: auto;
 }
 
 /* Thank You section - white background to alternate with Contact */
 #thankyou {
   position: relative;
-  min-height: 100vh;
+  min-height: auto;
   z-index: 10;
-  padding-top: calc(54px + 6rem);
-  padding-bottom: 6rem;
+  padding-top: calc(24px);
+  padding-bottom: 24px;
   background-color: white;
 }
 
 @media (max-width: 768px) {
   #thankyou {
-    padding-top: calc(46px + 4rem);
-    padding-bottom: 4rem;
+    padding-top: calc(24px);
+    padding-bottom: 24px;
   }
 }
 
