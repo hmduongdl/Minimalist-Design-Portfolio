@@ -12,7 +12,7 @@ export const renderAbout = (): string => {
     <!-- About Section -->
     <section id="about" class="relative overflow-x-hidden bg-gray-100">
       
-      <div class="relative pt-[30px] pb-[10px] md:pt-[62px] md:pb-[10px]">
+      <div class="relative pt-[80px] pb-[10px] md:pt-[62px] md:pb-[10px]">
         <!-- Background Image with Blur (Desktop only) -->
         <div class="absolute inset-x-0 top-0 -z-10 hidden md:block overflow-hidden" style="height: 100%;">
           <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" style="background-image: url('/profile-background.jpg'); filter: blur(10px); transform: scale(1.2); height: 100%;"></div>
