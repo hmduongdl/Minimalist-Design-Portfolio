@@ -8,7 +8,7 @@
  * Triggers skill progress animations when elements enter viewport
  */
 export function handleScrollReveal(): void {
-    const reveals = document.querySelectorAll('.section-reveal');
+    const reveals = document.querySelectorAll('.section-reveal') as NodeListOf<HTMLElement>;
     const windowHeight = window.innerHeight;
     const elementVisible = 150;
 
