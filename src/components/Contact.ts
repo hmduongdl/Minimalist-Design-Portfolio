@@ -56,21 +56,21 @@ export const renderContact = (): string => {
                                     <div class="flex-shrink-0 w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold text-sm shadow-md">1</div>
                                     <div>
                                         <h4 class="font-bold text-gray-900 text-lg leading-tight">Mở ứng dụng Zalo</h4>
-                                        <p class="text-gray-500 text-base mt-1">Trên điện thoại hoặc máy tính của bạn</p>
+                                        <p class="text-gray-500 text-base mt-1 leading-relaxed">Trên điện thoại hoặc máy tính của bạn</p>
                                     </div>
                                 </div>
                                 <div class="flex gap-4 items-start">
                                     <div class="flex-shrink-0 w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold text-sm shadow-md">2</div>
                                     <div>
                                         <h4 class="font-bold text-gray-900 text-lg leading-tight">Chọn "Quét mã QR"</h4>
-                                        <p class="text-gray-500 text-base mt-1">Nằm ở góc trên bên phải màn hình</p>
+                                        <p class="text-gray-500 text-base mt-1 leading-relaxed">Nằm ở góc trên bên phải màn hình</p>
                                     </div>
                                 </div>
                                 <div class="flex gap-4 items-start">
                                     <div class="flex-shrink-0 w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold text-sm shadow-md">3</div>
                                     <div>
                                         <h4 class="font-bold text-gray-900 text-lg leading-tight">Hướng camera vào mã QR</h4>
-                                        <p class="text-gray-500 text-base mt-1">Và bắt đầu trò chuyện ngay với tôi</p>
+                                        <p class="text-gray-500 text-base mt-1 leading-relaxed">Và bắt đầu trò chuyện ngay với tôi</p>
                                     </div>
                                 </div>
                             </div>
@@ -78,15 +78,15 @@ export const renderContact = (): string => {
                     </div>
 
                     <!-- ===================== ZONE 4: Action Buttons (FULL WIDTH - Separate Row) ===================== -->
-                    <div class="pt-2 border-t border-gray-100 flex flex-wrap gap-3 items-center justify-end">
+                    <div class="pt-2 border-t border-gray-100 grid grid-cols-2 md:flex md:flex-row gap-3 md:justify-end">
                         <!-- Download Button -->
-                        <button id="btn-download-qr" class="inline-flex items-center gap-2 px-5 py-3 bg-emerald-600 text-white rounded-xl shadow-md font-medium hover:bg-emerald-700 transition-all">
+                        <button id="btn-download-qr" class="inline-flex items-center justify-center gap-2 px-3 md:px-5 py-3 bg-emerald-600 text-white rounded-xl shadow-md font-medium hover:bg-emerald-700 transition-all text-sm md:text-base">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
                             Tải xuống QR
                         </button>
                         
                         <!-- Copy Link Button -->
-                        <button id="btn-copy-link" class="inline-flex items-center gap-2 px-5 py-3 bg-white border border-gray-200 text-gray-700 rounded-xl font-medium shadow-sm hover:bg-gray-50 transition-all">
+                        <button id="btn-copy-link" class="inline-flex items-center justify-center gap-2 px-3 md:px-5 py-3 bg-white border border-gray-200 text-gray-700 rounded-xl font-medium shadow-sm hover:bg-gray-50 transition-all text-sm md:text-base">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg>
                             Sao chép link
                         </button>
