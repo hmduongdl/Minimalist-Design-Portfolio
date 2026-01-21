@@ -96,11 +96,62 @@
     color: #34A853;
 }
 
-/* Hide on Desktop */
+/* Back To Top Button - Desktop Only */
+#back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 49;
+    /* Below mobile toggle if they ever overlap (shouldn't) */
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 9999px;
+    background-color: #00BFA5;
+    /* Clean Accent (Brand Green) */
+    color: white;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    /* Removed 'all' to avoid unwanted hover transitions if any */
+    border: none;
+    cursor: pointer;
+
+    /* Hidden by default, shown via JS class */
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(20px);
+}
+
+#back-to-top.visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+/* Removed hover effect as requested */
+
+
+/* Visibility Control */
+
+/* Mobile: Show Social Toggle, Hide Back To Top */
+@media (max-width: 767px) {
+    #back-to-top {
+        display: none !important;
+    }
+}
+
+/* Desktop: Hide Social Toggle, Show Back To Top Logic */
 @media (min-width: 768px) {
 
     #sticky-social-toggle,
     #sticky-social-panel {
         display: none !important;
+    }
+
+    #back-to-top {
+        display: flex;
+        /* Allow it to be shown nicely */
     }
 }

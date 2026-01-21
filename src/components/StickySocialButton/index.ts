@@ -24,47 +24,75 @@ export const renderStickySocialButton = (): string => {
         <button id="sticky-social-toggle" aria-label="Open social contacts">
             <img src="https://img.icons8.com/?size=160&id=B2axSwNLcemm&format=png" alt="Contact Icon" class="w-8 h-8">
         </button>
+        <!-- Back To Top Button -->
+        <button id="back-to-top" aria-label="Back to Top">
+            <svg class="w-[35px] h-[35px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m18 15-6-6-6 6"/>
+            </svg>
+        </button>
     </div>
   `;
 };
 
 export const initStickySocialButton = (): void => {
+    // 1. Mobile Social Toggle Logic
     const toggle = document.getElementById('sticky-social-toggle');
     const panel = document.getElementById('sticky-social-panel');
 
-    if (!toggle || !panel) return;
+    if (toggle && panel) {
+        const handleToggle = (e: MouseEvent) => {
+            e.stopPropagation();
+            const isOpen = panel.classList.contains('active');
 
-    // Toggle Function
-    const handleToggle = (e: MouseEvent) => {
-        e.stopPropagation();
-        const isOpen = panel.classList.contains('active');
+            if (isOpen) {
+                panel.classList.remove('active');
+                toggle.classList.remove('active');
+            } else {
+                panel.classList.add('active');
+                toggle.classList.add('active');
+            }
+        };
 
-        if (isOpen) {
-            panel.classList.remove('active');
-            toggle.classList.remove('active');
-        } else {
-            panel.classList.add('active');
-            toggle.classList.add('active');
-        }
-    };
+        const handleOutsideClick = (e: MouseEvent) => {
+            if (!toggle.contains(e.target as Node) && !panel.contains(e.target as Node) && panel.classList.contains('active')) {
+                panel.classList.remove('active');
+                toggle.classList.remove('active');
+            }
+        };
 
-    // Close on Outside Click
-    const handleOutsideClick = (e: MouseEvent) => {
-        if (!toggle.contains(e.target as Node) && !panel.contains(e.target as Node) && panel.classList.contains('active')) {
-            panel.classList.remove('active');
-            toggle.classList.remove('active');
-        }
-    };
+        const handleResize = () => {
+            if (window.innerWidth >= 768 && panel.classList.contains('active')) {
+                panel.classList.remove('active');
+                toggle.classList.remove('active');
+            }
+        };
 
-    // Close on Resize (if switching to desktop)
-    const handleResize = () => {
-        if (window.innerWidth >= 768 && panel.classList.contains('active')) {
-            panel.classList.remove('active');
-            toggle.classList.remove('active');
-        }
-    };
+        toggle.addEventListener('click', handleToggle);
+        document.addEventListener('click', handleOutsideClick);
+        window.addEventListener('resize', handleResize);
+    }
 
-    toggle.addEventListener('click', handleToggle);
-    document.addEventListener('click', handleOutsideClick);
-    window.addEventListener('resize', handleResize);
+    // 2. Desktop Back To Top Logic
+    const backToTopBtn = document.getElementById('back-to-top');
+    if (backToTopBtn) {
+        const toggleBackToTopVisibility = () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        };
+
+        const scrollToTop = () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        };
+
+        window.addEventListener('scroll', toggleBackToTopVisibility, { passive: true });
+        backToTopBtn.addEventListener('click', scrollToTop);
+        // Initial check in case page is refreshed while scrolled
+        toggleBackToTopVisibility();
+    }
 };
