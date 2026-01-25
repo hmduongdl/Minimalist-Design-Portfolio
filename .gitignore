@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+# Admin Panel - Private
+src/components/Admin/PrivateAdmin.ts
+ADMIN_CREDENTIALS.md

@@ -40,15 +40,19 @@ export class PortfolioController {
         const hash = window.location.hash;
 
         if (hash === '#admin') {
-            import('../components/Admin/AdminPanel').then(({ renderAdminPanel, initAdminPanel }) => {
-                this.app.innerHTML = renderAdminPanel();
+            import('../components/Admin/AdminPanel').then(async ({ renderAdminPanel, initAdminPanel }) => {
+                this.app.innerHTML = await renderAdminPanel();
                 initAdminPanel();
 
-                // Add exit listener
-                document.getElementById('exit-admin')?.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    window.location.hash = ''; // Clear hash returns to main
-                });
+                // Add exit listener logic reused or handled inside admin panel for specific exit btn if rendered
+                // But global fallback if it returns 404 page:
+                const exitBtn = document.getElementById('exit-admin'); // If rendered by private
+                if (exitBtn) {
+                    exitBtn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        window.location.hash = '';
+                    });
+                }
             });
             return;
         }
